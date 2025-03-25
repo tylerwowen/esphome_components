@@ -1,0 +1,36 @@
+external_components:
+  - source:
+      type: git
+      url: https://github.com/tylerwowen/esphome_components/
+    components:
+      - nrf24
+      - mijia_light_bar
+
+spi:
+  id: spi_bus
+  clk_pin: D5
+  miso_pin: D6
+  mosi_pin: D7
+
+light:
+  - platform: mijia_light_bar
+    name: "Mijia Light Bar"
+    light_id: lightbar
+    ce_pin: D0
+    cs_pin: D8
+    # remote_id: 0xc97e40
+    restore_mode: RESTORE_DEFAULT_OFF
+
+# Optional if you want to pair the light bar.
+# Note that you will need to remove the remote_id from the light bar component,
+# as it takes precedence over the pairing mode.
+# To pair, click the button in home assistant, and start spining your remote control.
+# The paring mode will last for 2 minutes.
+# Once the remote id is captured, there will be a log message and the remote id
+# will be saved and then you can start controlling the light bar.
+button:
+  - platform: template
+    name: "Pair Mijia Light Bar"
+    on_press:
+      - lambda: |-
+          id(lightbar).start_pairing();
