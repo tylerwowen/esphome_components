@@ -231,42 +231,42 @@ void MijiaLightBarComponent::write_state(light::LightState *state) {
   }
 }
 
-void MijiaLightBarComponent::toggle() {
+bool MijiaLightBarComponent::toggle() {
   ESP_LOGD(TAG, "Toggling");
   return queue_command(CMD_TOGGLE);
 }
 
-void MijiaLightBarComponent::reset() {
+bool MijiaLightBarComponent::reset() {
   ESP_LOGD(TAG, "Resetting");
   return queue_command(CMD_RESET);
 }
 
-void MijiaLightBarComponent::cooler() {
+bool MijiaLightBarComponent::cooler() {
   ESP_LOGD(TAG, "Cooler");
   return queue_command(CMD_COOLER);
 }
 
-void MijiaLightBarComponent::warmer() {
+bool MijiaLightBarComponent::warmer() {
   ESP_LOGD(TAG, "Warmer");
   return queue_command(CMD_WARMER);
 }
 
-void MijiaLightBarComponent::brighter() {
+bool MijiaLightBarComponent::brighter() {
   ESP_LOGD(TAG, "Brighter");
   return queue_command(CMD_BRIGHTER);
 }
 
-void MijiaLightBarComponent::dimmer() {
+bool MijiaLightBarComponent::dimmer() {
   ESP_LOGD(TAG, "Dimmer");
   return queue_command(CMD_DIMMER);
 }
 
-void MijiaLightBarComponent::set_brightness(uint8_t brightness) {
+bool MijiaLightBarComponent::set_brightness(uint8_t brightness) {
   ESP_LOGD(TAG, "Setting brightness: %d", brightness);
   return queue_command(CMD_DIMMER, 0xF0) && queue_command(CMD_BRIGHTER, brightness);
 }
 
-void MijiaLightBarComponent::set_color_temp(uint8_t color_temp) {
+bool MijiaLightBarComponent::set_color_temp(uint8_t color_temp) {
   ESP_LOGD(TAG, "Setting color temperature: %d", color_temp);
   return queue_command(CMD_WARMER, 0xF0) && queue_command(CMD_COOLER, color_temp);
 }

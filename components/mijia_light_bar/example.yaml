@@ -1,3 +1,8 @@
+esphome:
+  libraries:
+    - SPI
+    - nrf24/RF24@^1.4.11
+
 external_components:
   - source:
       type: git

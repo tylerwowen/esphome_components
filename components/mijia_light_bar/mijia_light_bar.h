@@ -1,11 +1,11 @@
 #pragma once
 
+#include <queue>
 #include "esphome/components/light/light_output.h"
 #include "esphome/components/light/light_traits.h"
 #include "esphome/components/nrf24/nrf24.h"
 #include "esphome/core/automation.h"
 #include "esphome/core/component.h"
-#include <queue>
 #include "esphome/core/preferences.h"
 
 namespace esphome {
